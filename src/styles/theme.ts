@@ -8,14 +8,22 @@ const theme: DefaultTheme = {
     border: '#dcdcdc',
     black: '#121212',
     white: '#ffffff',
+    grayLighter: '#D8D8D8',
+    grayExtraLight: '#F3F3F3',
     highlight: '#238636',
     background: '#f5f5f5',
     text: '#000',
   },
+  border: {
+    tabsBar: '1px solid #D8D8D8'
+  },
   shadow: {
     wrapper: '0px 0px 9px 5px rgba(0,0,0,0.06)',
   },
-  borderRadius: '20px',
+  borderRadius: {
+    small: '16px',
+    large: '100px',
+  },
   spacing: {
     small: '10px',
     medium: '20px',
