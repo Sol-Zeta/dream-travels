@@ -24,8 +24,15 @@
       "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["src/styles/*"],
       "@/types/*": ["src/types/*"],
-    }
+    },
+    "types": [
+      "jest",
+      "node",
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "cypress"
+  ],
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.setup.ts", "./globals.d.ts", "babel.config.js", "src/components/Card/__tests__/utils.test.jsx", "__tests__/index.test.jsx", "src/components/Card/__tests__/card.test.jsx"],
   "exclude": ["node_modules"]
 }
