@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import CheckIconOn from "@/assets/check-on.png";
-import CheckIconOff from "@/assets/check-on.png";
+import CheckIconOff from "@/assets/check-off.png";
 import { Container } from "./styles";
 
 interface TickButtonProps {
   isActive: boolean;
-  onClick: () => void;
+  onClick: (value: boolean) => void;
 }
 
 export const TickButton = ({ isActive, onClick }: TickButtonProps) => {
+  const [isChecked, setIsChecked] = useState<boolean>(isActive);
+
+  const handleClick = () => {
+    onClick(!isChecked);
+    setIsChecked(!isChecked);
+  };
+
   return (
-    <Container onClick={onClick}>
+    <Container onClick={handleClick} data-testid="tick-button">
       <Image
-        src={isActive ? CheckIconOn : CheckIconOff}
+        src={isChecked ? CheckIconOn : CheckIconOff}
         alt="Completed icon"
         width={20}
         height={20}
       />
-      <p>{isActive ? "Completed" : "Mark as completed"}</p>
+      <p>{isChecked ? "Completed" : "Mark as completed"}</p>
     </Container>
   );
 };

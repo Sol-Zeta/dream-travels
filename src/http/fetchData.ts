@@ -36,3 +36,15 @@ export const deleteTripById = async (
     throw new Error(`Failed to fetch trips: ${error.message}`);
   }
 };
+
+export const editTripById = async (
+  trip: Trip
+): Promise<Trip> => {
+  const url = `${baseUrl}/${trip.id}`
+  try {
+    const { data } = await axios.put(url, trip);
+    return trip;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch trips: ${error.message}`);
+  }
+};
