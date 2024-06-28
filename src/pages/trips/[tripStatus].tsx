@@ -20,11 +20,11 @@ interface TripTypologyProps {
 const TripTypology: React.FC<TripTypologyProps> = ({ tripStatus }) => {
   const { trips } = useSelector(getTrips);
   const [tripsData, setTripsData] = useState<Trip[]>([]);
-
+  console.log({trips, tripsData})
   useEffect(() => {
     const tripsToShow = filterTrips(trips, tripStatus);
     setTripsData(tripsToShow);
-  }, [trips]);
+  }, [trips, tripStatus]);
 
   return (
     <ModalProvider>
