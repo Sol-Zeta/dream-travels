@@ -16,20 +16,22 @@ const Layout = ({
   children?: React.ReactNode;
 }>) => {
   return (
-      <StyledComponentsRegistry>
-          <AppWrapper>
-            <Header />
-            <p>The places you dream of</p>
-            <p>Let&apos;s live new adventures</p>
-            <div className="search-bar">
-              <input type="text" placeholder="Search trips" />
-              <button>Search</button>
-            </div>
-            <TabsBar />
-            {children}
-            <Footer />
-          </AppWrapper>
-      </StyledComponentsRegistry>
+    <StyledComponentsRegistry>
+      <AppWrapper>
+        <div>
+          <Header />
+          <p>The places you dream of</p>
+          <p>Let&apos;s live new adventures</p>
+          <div className="search-bar">
+            <input type="text" placeholder="Search trips" />
+            <button>Search</button>
+          </div>
+          <TabsBar />
+          {children}
+        </div>
+        <Footer />
+      </AppWrapper>
+    </StyledComponentsRegistry>
   );
-}
+};
 export default Layout;

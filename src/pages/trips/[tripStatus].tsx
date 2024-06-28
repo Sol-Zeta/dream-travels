@@ -3,10 +3,12 @@ import { GetServerSideProps } from "next";
 import { styled } from "styled-components";
 import { Trip, TripStatusesRoutes } from "@/types/index";
 import { storeWrapper } from "@/store/index";
-import { getTripsData } from "src/http/fetchData";
-import Card from "@/components/Card";
+import { getTripsData } from "@/http/fetchData";
 import { getTrips, setTrips } from "@/store/slices/trips";
 import { useSelector } from "react-redux";
+import Card from "@/components/Card";
+import { Modal } from "@/components/Modal";
+import { ModalProvider } from "@/context/ModalContext";
 
 // interface TripTypologyProps {
 //   tripStatus: string;
@@ -21,17 +23,20 @@ const Container = styled.section`
 
 const TripTypology: React.FC = () => {
   const { trips } = useSelector(getTrips);
-  console.log({trips})
+  
   return (
-    <Container>
-      {trips.length ? (
-        trips.map((trip: Trip) => (
-          <Card key={`${trip.id}-${trip.title}`} {...trip} />
-        ))
-      ) : (
-        <p>No trips found</p>
-      )}
-    </Container>
+    <ModalProvider>
+      <Container>
+        {trips.length ? (
+          trips.map((trip: Trip) => (
+            <Card key={`${trip.id}-${trip.title}`} {...trip} />
+          ))
+        ) : (
+          <p>No trips found</p>
+        )}
+        <Modal />
+      </Container>
+    </ModalProvider>
   );
 };
 

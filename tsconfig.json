@@ -21,6 +21,7 @@
     "paths": {
       "@/assets/*": ["src/assets/*"],
       "@/components/*": ["src/components/*"],
+      "@/context/*": ["src/context/*"],
       "@/http/*": ["src/http/*"],
       "@/jest/*": ["src/jest/*"],
       "@/lib/*": ["src/lib/*"],

@@ -1,6 +1,6 @@
 import { ValueOf } from "next/dist/shared/lib/constants";
 
-interface TripItinerary {
+export interface TripItinerary {
   day: number;
   location: string;
   description: string;

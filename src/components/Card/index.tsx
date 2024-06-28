@@ -13,6 +13,8 @@ import {
 import { useDispatch } from "react-redux";
 import { deleteTripByIdAction } from "@/store/actions";
 import { UnknownAction } from "@reduxjs/toolkit";
+import { useModal } from "@/context/ModalContext";
+import { TripDetails } from "../TripDetails";
 
 enum ButtonActions {
   SEE_DETAILS,
@@ -20,14 +22,16 @@ enum ButtonActions {
   DELETE,
 }
 
-const Card: React.FC<Trip> = ({ id, title, description, photo_url, status }) => {
-    
+const Card: React.FC<Trip> = (cardProps) => {
+  const { id, title, description, photo_url } = cardProps;
   const dispatch = useDispatch();
+  const { openModal } : any = useModal();
   
   
   const handleClick = (action: ButtonActions) => {
     switch (action) {
       case ButtonActions.SEE_DETAILS:
+        openModal(<TripDetails {...cardProps}/>)
         break;
       case ButtonActions.EDIT:
         break;
