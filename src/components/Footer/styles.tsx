@@ -4,7 +4,7 @@ export const AppFooter = styled.footer`
   max-width: inherit;
   text-align: center;
   color: ${({ theme }) => theme.colors.black};
-  padding: 32px;
+  padding: 32px 32px 16px;
   a {
     color: inherit;
     text-decoration: inherit;

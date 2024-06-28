@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <AppFooter data-testid="footer">
       <p>
-        Developed by{" "}
+        Developed with ☕️ by{" "}
         <Link href="https://github.com/Sol-Zeta" target="_blank">
           Soledad Pattoglio
         </Link>

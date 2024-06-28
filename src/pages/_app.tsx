@@ -1,10 +1,9 @@
-// src/pages/_app.tsx
-
-import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
+import { AppProps } from "next/app";
 import "@/styles/globals.css";
-import { ThemeProvider } from 'styled-components'; //
-import theme from '../styles/theme';
-import Layout from '@/components/Layout';
+import { ThemeProvider } from "styled-components";
+import theme from "@/styles/theme";
+import Layout from "@/components/Layout";
+import { storeWrapper } from "@/store/index";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -17,13 +16,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default MyApp;
-
-// MyApp.getInitialProps = async (
-//     context: AppContext
-//   ): Promise<AppProps & AppInitialProps> => {
-//     const ctx = await App.getInitialProps(context)
-   
-//     // return { ...ctx, example: 'data' }
-//     return {  }
-//   }
+export default storeWrapper.withRedux(MyApp);

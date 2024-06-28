@@ -24,13 +24,15 @@
       "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["src/styles/*"],
       "@/types/*": ["src/types/*"],
+      "@/store/*": ["src/store/*"],
     },
     "types": [
       "jest",
       "node",
       "@testing-library/jest-dom",
       "@testing-library/react",
-      "cypress"
+      "cypress",
+      "@reduxjs/toolkit"
   ],
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.setup.ts", "./globals.d.ts", "babel.config.js", "src/components/Card/__tests__/utils.test.jsx", "__tests__/index.test.jsx", "src/components/Card/__tests__/card.test.jsx"],

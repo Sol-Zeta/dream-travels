@@ -2,28 +2,31 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import { styled } from "styled-components";
 import { Trip, TripStatusesRoutes } from "@/types/index";
+import { storeWrapper } from "@/store/index";
 import { fetchTrips } from "src/http/fetchData";
 import Card from "@/components/Card";
+import { getTrips, setTrips } from "@/store/slices/trips";
+import { useSelector } from "react-redux";
 
-interface TripTypologyProps {
-  tripStatus: string;
-  tripsList: Trip[];
-}
+// interface TripTypologyProps {
+//   tripStatus: string;
+//   tripsList: Trip[];
+// }
 
-const Container =  styled.section`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.lg};
-`
+`;
 
-const TripTypology: React.FC<TripTypologyProps> = ({
-  tripsList,
-  tripStatus,
-}) => {
+const TripTypology: React.FC = () => {
+  const { trips } = useSelector(getTrips);
   return (
     <Container>
-      {tripsList.length ? (
-        tripsList.map((trip) => <Card key={`${trip.id}-${trip.title}`} {...trip} />)
+      {trips.length ? (
+        trips.map((trip: Trip) => (
+          <Card key={`${trip.id}-${trip.title}`} {...trip} />
+        ))
       ) : (
         <p>No trips found</p>
       )}
@@ -33,15 +36,17 @@ const TripTypology: React.FC<TripTypologyProps> = ({
 
 export default TripTypology;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  // Fetch data from an external API or database
-  const tripsList = await fetchTrips(params?.tripStatus as TripStatusesRoutes);
+export const getServerSideProps: GetServerSideProps =
+  storeWrapper.getServerSideProps((store) => async ({ params }) => {
+    const tripsList = await fetchTrips(
+      params?.tripStatus as TripStatusesRoutes
+    );
 
-  // Pass data to the page via props
-  return {
-    props: {
-      tripStatus: params?.tripStatus,
-      tripsList,
-    },
-  };
-};
+    store.dispatch(setTrips(tripsList));
+
+    return {
+      props: {
+        tripStatus: params?.tripStatus,
+      },
+    };
+  });
