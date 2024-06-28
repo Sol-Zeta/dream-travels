@@ -10,7 +10,7 @@ const AppHeader = styled.header`
   align-items: center;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.black};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 16px;
   overflow: hidden;
 `;

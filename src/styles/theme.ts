@@ -1,34 +1,52 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from "styled-components";
+
+const breakpoints = {
+  sm: "576px",
+  md: "768px",
+  lg: "992px",
+  xl: "1200px",
+};
 
 const theme: DefaultTheme = {
+  breakpoints,
   colors: {
-    primary: '#333',
-    secondary: '#444',
-    hover: '#e0e0e0',
-    border: '#dcdcdc',
-    black: '#121212',
-    white: '#ffffff',
-    grayLighter: '#D8D8D8',
-    grayExtraLight: '#F3F3F3',
-    highlight: '#238636',
-    background: '#f5f5f5',
-    text: '#000',
+    primary: "#333",
+    secondary: "#444",
+    hover: "#e0e0e0",
+    border: "#dcdcdc",
+    black: "#121212",
+    white: "#ffffff",
+    red: "#C93957",
+    grayLighter: "#D8D8D8",
+    grayExtraLight: "#F3F3F3",
+    highlight: "#238636",
+    background: "#f5f5f5",
+    text: "#000",
   },
   border: {
-    tabsBar: '1px solid #D8D8D8'
-  },
-  shadow: {
-    wrapper: '0px 0px 9px 5px rgba(0,0,0,0.06)',
+    primary: "1px solid #D8D8D8",
   },
   borderRadius: {
-    small: '16px',
-    large: '100px',
+    md: "16px",
+    lg: "100px",
+  },
+  fontSize: {
+    lg: "1.5",
+    md: "1em",
+    sm: ".75",
+  },
+  padding: {
+    "3xl": "24px",
+  },
+  shadow: {
+    wrapper: "0px 0px 9px 5px rgba(0,0,0,0.06)",
   },
   spacing: {
-    small: '10px',
-    medium: '20px',
+    sm: "10px",
+    md: "16px",
+    lg: "24px",
   },
-  transition: '0.3s',
+  transition: "0.3s",
 };
 
 export default theme;
