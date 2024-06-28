@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import { styled } from "styled-components";
 import { Trip, TripStatusesRoutes } from "@/types/index";
 import { storeWrapper } from "@/store/index";
-import { fetchTrips } from "src/http/fetchData";
+import { getTripsData } from "src/http/fetchData";
 import Card from "@/components/Card";
 import { getTrips, setTrips } from "@/store/slices/trips";
 import { useSelector } from "react-redux";
@@ -21,6 +21,7 @@ const Container = styled.section`
 
 const TripTypology: React.FC = () => {
   const { trips } = useSelector(getTrips);
+  console.log({trips})
   return (
     <Container>
       {trips.length ? (
@@ -38,7 +39,7 @@ export default TripTypology;
 
 export const getServerSideProps: GetServerSideProps =
   storeWrapper.getServerSideProps((store) => async ({ params }) => {
-    const tripsList = await fetchTrips(
+    const tripsList = await getTripsData(
       params?.tripStatus as TripStatusesRoutes
     );
 

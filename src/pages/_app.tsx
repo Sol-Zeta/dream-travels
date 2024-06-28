@@ -9,7 +9,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Layout>
-        this is _app in pages
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

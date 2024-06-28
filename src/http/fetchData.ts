@@ -10,7 +10,7 @@ export const TripStatusMap = {
   [TripStatusesRoutes.COMPLETED]: "done",
 };
 
-export const fetchTrips = async (
+export const getTripsData = async (
   tripStatus?: TripStatusesRoutes
 ): Promise<Trip> => {
   const url =
@@ -22,5 +22,17 @@ export const fetchTrips = async (
     return data;
   } catch (error: any) {
     throw new Error(`Failed to fetch trips ${tripStatus}: ${error.message}`);
+  }
+};
+
+export const deleteTripById = async (
+  tripId?: number
+): Promise<void> => {
+  const url = `${baseUrl}/${tripId}`
+  try {
+    const { data } = await axios.delete(url);
+    return data;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch trips: ${error.message}`);
   }
 };

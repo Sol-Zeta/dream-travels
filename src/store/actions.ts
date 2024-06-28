@@ -1,10 +1,14 @@
-// export const deleteTrip(tripId: number) {
-//     return function setTypologySourceDispatch(
-//       dispatch: Dispatch<any>,
-//       getState: any
-//     ) {
-//       if (getState().typology.source !== source) {
-//         return dispatch(setTypologyData({ source }));
-//       }
-//     };
-//   }
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { deleteTripById } from "@/http/fetchData";
+
+export const deleteTripByIdAction = createAsyncThunk(
+    'trips/deleteTripById',
+    async (tripId: number, { rejectWithValue }) => {
+      try {
+        await deleteTripById(tripId);
+        return tripId;
+      } catch (error) {
+        return rejectWithValue(error);
+      }
+    }
+  );
