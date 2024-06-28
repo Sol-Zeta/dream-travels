@@ -15,7 +15,7 @@ describe("Home view", () => {
   });
 
   it("should show at least one Card component", () => {
-    cy.get("div[data-testid=card]").should("exist");
+    cy.get("div[data-testid=card-1]").should("exist");
   });
 
   it("should show the Footer component", () => {
