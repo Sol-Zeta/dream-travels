@@ -5,7 +5,6 @@ export const filterTrips = (
   trips: Trip[],
   tripStatus: ValueOf<TripStatusesRoutes>
 ): Trip[] => {
-  console.log("TRIP STATUUUUUUUS", tripStatus);
   if (tripStatus === TripStatusesRoutes.ALL) {
     return trips;
   }
