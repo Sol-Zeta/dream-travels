@@ -31,7 +31,8 @@ const theme: DefaultTheme = {
     lg: "100px",
   },
   fontSize: {
-    lg: "1.5",
+    xl: "2em",
+    lg: "1.5em",
     md: "1em",
     sm: ".75",
   },

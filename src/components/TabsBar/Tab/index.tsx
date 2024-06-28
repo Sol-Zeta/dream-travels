@@ -20,7 +20,7 @@ const StyledTab = styled(Link)<StyledTabProps>`
   text-decoration: inherit;
   transition: background-color 0.3s, color 0.3s;
   background-color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.grayExtraLight : theme.colors.white};
+    isActive ? theme.colors.grayExtraLight : 'transparent'};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.grayExtraLight};

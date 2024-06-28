@@ -10,11 +10,12 @@ const StyledTabsBar = styled.div`
   align-items: center;
   width: fit-content;
   height: 40px;
-  background-color: #f5f5f5;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   border: ${({ theme }) => theme.border.primary};
   padding: 0;
   overflow: hidden;
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
 const TabsBar: React.FC = () => {
