@@ -11,8 +11,8 @@ const StyledTabsBar = styled.div`
   width: fit-content;
   height: 40px;
   background-color: #f5f5f5;
-  border-radius: ${({ theme }) => theme.borderRadius.large};
-  border: ${({ theme }) => theme.border.tabsBar};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  border: ${({ theme }) => theme.border.primary};
   padding: 0;
   overflow: hidden;
 `;
@@ -21,7 +21,7 @@ const TabsBar: React.FC = () => {
   const router = useRouter();
 
   return (
-    <StyledTabsBar>
+    <StyledTabsBar data-testid='tabs-bar'>
       {tabsRoutes.map((route) => (
         <Tab
           key={route.value}

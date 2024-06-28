@@ -32,7 +32,6 @@ const StyledTab = styled(Link)<StyledTabProps>`
 `;
 
 const Tab: React.FC<TabProps> = ({ href, title, isActive }) => {
-  console.log({isActive, title, href})
   return (
     <StyledTab href={href} isActive={isActive}>
       {title}

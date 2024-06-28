@@ -1,5 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import { styled } from "styled-components";
 import { Trip, TripStatusesRoutes } from "@/types/index";
 import { fetchTrips } from "src/http/fetchData";
 import Card from "@/components/Card";
@@ -9,19 +10,24 @@ interface TripTypologyProps {
   tripsList: Trip[];
 }
 
+const Container =  styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.lg};
+`
+
 const TripTypology: React.FC<TripTypologyProps> = ({
   tripsList,
   tripStatus,
 }) => {
-  console.log(tripsList, tripStatus);
   return (
-    <section>
+    <Container>
       {tripsList.length ? (
         tripsList.map((trip) => <Card key={`${trip.id}-${trip.title}`} {...trip} />)
       ) : (
         <p>No trips found</p>
       )}
-    </section>
+    </Container>
   );
 };
 
