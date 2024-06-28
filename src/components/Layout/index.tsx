@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TabsBar from "@/components/TabsBar";
 import AppWrapper from "@/components/AppWrapper";
+import { ContentWrapper } from "./styles";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,7 @@ const Layout = ({
   return (
     <StyledComponentsRegistry>
       <AppWrapper>
-        <div>
+        <ContentWrapper>
           <Header />
           <p>The places you dream of</p>
           <p>Let&apos;s live new adventures</p>
@@ -28,9 +29,9 @@ const Layout = ({
           </div>
           <TabsBar />
           {children}
-        </div>
+        </ContentWrapper>
+        </AppWrapper>
         <Footer />
-      </AppWrapper>
     </StyledComponentsRegistry>
   );
 };
