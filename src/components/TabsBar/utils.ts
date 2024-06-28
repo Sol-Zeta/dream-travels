@@ -1,14 +1,17 @@
 export const tabsRoutes = [
-    {
-        title: 'All',
-        path: '/trips/all'
-    },
-    {
-        title: 'Upcoming',
-        path: '/trips/upcoming'
-    },
-    {
-        title: 'Completed',
-        path: '/trips/completed'
-    },
-]
+  {
+    title: "All",
+    path: "/trips/all",
+    value: "all",
+  },
+  {
+    title: "Upcoming",
+    path: "/trips/upcoming",
+    value: "upcoming",
+  },
+  {
+    title: "Completed",
+    path: "/trips/completed",
+    value: "completed",
+  },
+];

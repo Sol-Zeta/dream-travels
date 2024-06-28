@@ -1,10 +1,6 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
-
 const AppFooter = styled.footer`
   max-width: inherit;
   text-align: center;
@@ -22,7 +18,6 @@ const AppFooter = styled.footer`
 
 const Footer = () => {
   return (
-    <ThemeProvider theme={theme}>
       <AppFooter>
         <p>
           Developed by{" "}
@@ -31,7 +26,6 @@ const Footer = () => {
           </Link>
         </p>
       </AppFooter>
-    </ThemeProvider>
   );
 };
 

@@ -1,12 +1,10 @@
-"use client";
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
 import { tabsRoutes } from "./utils";
+import Tab from "./Tab";
+import { useRouter } from "next/router";
 
-const NavBar = styled.nav`
+const StyledTabsBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,35 +17,21 @@ const NavBar = styled.nav`
   overflow: hidden;
 `;
 
-const NavItem = styled(Link)`
-  flex: 1;
-  text-align: center;
-  padding: 10px 20px;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.black};
-  text-decoration: inherit;
-  transition: background-color 0.3s, color 0.3s;
-  background-color: ${({ theme }) => theme.colors.white};
+const TabsBar: React.FC = () => {
+  const router = useRouter();
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.grayExtraLight};
-  }
-
-  &:not(:last-child) {
-    border-right: ${({ theme }) => theme.border.tabsBar};
-  }
-`;
-
-const NavigationBar: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <NavBar>
-        {tabsRoutes.map(route => (
-          <NavItem href={route.path} >{route.title}</NavItem>
-        ))}
-      </NavBar>
-    </ThemeProvider>
+    <StyledTabsBar>
+      {tabsRoutes.map((route) => (
+        <Tab
+          key={route.value}
+          href={route.path}
+          title={route.title}
+          isActive={router.pathname === route.value}
+        />
+      ))}
+    </StyledTabsBar>
   );
 };
 
-export default NavigationBar;
+export default TabsBar;

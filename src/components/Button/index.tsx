@@ -1,8 +1,5 @@
-"use client";
 import React from "react";
 import styled from "styled-components";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
 import { ValueOf } from "next/dist/shared/lib/constants";
 
 export enum ButtonVariants {
@@ -27,9 +24,9 @@ const StyledButton = styled.button<ButtonProps>`
 
 const Button = ({ variant = ButtonVariants.PRIMARY, children }: ButtonProps) => {
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
       <StyledButton variant={variant}>{children}</StyledButton>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 };
 

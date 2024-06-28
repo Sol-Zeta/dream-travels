@@ -1,10 +1,7 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import appLogo from "@/assets/app-logo.png";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
 import Button, { ButtonVariants } from "@/components/Button";
 
 const AppHeader = styled.header`
@@ -20,7 +17,6 @@ const AppHeader = styled.header`
 
 const Header = () => {
   return (
-    <ThemeProvider theme={theme}>
       <AppHeader>
         <Image
           src={appLogo}
@@ -30,7 +26,6 @@ const Header = () => {
         />
         <Button variant={ButtonVariants.SECONDARY}>Find my next trip</Button>
       </AppHeader>
-    </ThemeProvider>
   );
 };
 
