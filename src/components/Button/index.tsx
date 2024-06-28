@@ -18,7 +18,7 @@ const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   background-color: ${({ variant = ButtonVariants.PRIMARY, theme }) =>
     variant === ButtonVariants.SECONDARY ? theme.colors.white : theme.colors.black};
-  border-radius: ${({ theme }) => theme.borderRadius.large};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
   padding: 12px;
 `;
 
