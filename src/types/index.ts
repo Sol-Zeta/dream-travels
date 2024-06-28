@@ -25,5 +25,5 @@ export interface Trip {
   description: string;
   photo_url: string;
   status: TripStatus;
-  itinerary: TripItinerary;
+  itinerary: TripItinerary[];
 }
