@@ -5,7 +5,7 @@ import { CloseButton, ModalBackground, ModalContainer } from "./styles";
 import CloseIcon from "@/assets/close-icon.png";
 
 export const Modal = () => {
-  const { isOpen, modalContent, closeModal }: any = useModal() || {
+  const { isOpen, modalContent, closeModal } = useModal() || {
     isOpen: false,
   };
 

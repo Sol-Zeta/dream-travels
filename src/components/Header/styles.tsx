@@ -7,6 +7,7 @@ export const AppHeader = styled.header`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.black};
   border-radius: ${({ theme }) => theme.borderRadius.md};
-  padding: 16px;
+  padding: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   overflow: hidden;
 `;

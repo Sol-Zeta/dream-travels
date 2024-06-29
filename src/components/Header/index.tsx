@@ -13,7 +13,7 @@ const Header = () => {
           width={48}
           height={48}
         />
-        <Button variant={ButtonVariants.SECONDARY}>Find my next trip</Button>
+        <Button onClick={()=>{}} variant={ButtonVariants.SECONDARY}>Find my next trip</Button>
       </AppHeader>
   );
 };

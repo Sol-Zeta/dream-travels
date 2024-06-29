@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
-import { styled } from "styled-components";
 import { Trip, TripStatusesRoutes } from "@/types/index";
 import { storeWrapper } from "@/store/index";
 import { getTripsData } from "@/http/fetchData";
@@ -10,8 +9,9 @@ import Card from "@/components/Card";
 import { Modal } from "@/components/Modal";
 import { ModalProvider } from "@/context/ModalContext";
 import { ValueOf } from "next/dist/shared/lib/constants";
-import { filterTrips } from "./utils";
+import { filterTripsByStatus, filterTripsByFilter } from "./utils";
 import { Container } from "./styles";
+import { useSearchContext } from "@/context/SearchContext";
 
 interface TripTypologyProps {
   tripStatus: ValueOf<TripStatusesRoutes>;
@@ -19,12 +19,22 @@ interface TripTypologyProps {
 
 const TripTypology: React.FC<TripTypologyProps> = ({ tripStatus }) => {
   const { trips } = useSelector(getTrips);
+  const { filter } = useSearchContext() || { filter: "" };
+
   const [tripsData, setTripsData] = useState<Trip[]>([]);
 
   useEffect(() => {
-    const tripsToShow = filterTrips(trips, tripStatus);
+    const tripsToShow = filterTripsByStatus(trips, tripStatus);
     setTripsData(tripsToShow);
   }, [trips, tripStatus]);
+
+  useEffect(() => {
+    const tripsToShow = filterTripsByFilter(
+      filterTripsByStatus(trips, tripStatus),
+      filter
+    );
+    setTripsData(tripsToShow);
+  }, [filter]);
 
   return (
     <ModalProvider>
@@ -34,7 +44,7 @@ const TripTypology: React.FC<TripTypologyProps> = ({ tripStatus }) => {
             <Card key={`${trip.id}-${trip.title}`} {...trip} />
           ))
         ) : (
-          <p>No trips found</p>
+          <p>No trips found ✈️</p>
         )}
         <Modal />
       </Container>
