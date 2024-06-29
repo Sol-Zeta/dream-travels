@@ -15,6 +15,7 @@ import { deleteTripByIdAction } from "@/store/actions";
 import { UnknownAction } from "@reduxjs/toolkit";
 import { useModal } from "@/context/ModalContext";
 import { TripDetails } from "../TripDetails";
+import TripFrom from "../TripFrom";
 
 enum ButtonActions {
   SEE_DETAILS,
@@ -34,6 +35,7 @@ const Card: React.FC<Trip> = (cardProps) => {
         openModal(<TripDetails {...cardProps}/>)
         break;
       case ButtonActions.EDIT:
+        openModal(<TripFrom {...cardProps}/>)
         break;
       case ButtonActions.DELETE:
         dispatch(deleteTripByIdAction(id) as unknown as UnknownAction);

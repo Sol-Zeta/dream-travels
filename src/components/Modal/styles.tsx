@@ -18,7 +18,8 @@ export const ModalContainer = styled.div`
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 90%;
+  height: 95%;
   z-index: 1001;
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 500px;

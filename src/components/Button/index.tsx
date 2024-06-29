@@ -6,19 +6,31 @@ export enum ButtonVariants {
   PRIMARY = "PRIMARY",
   SECONDARY = "SECONDARY",
 }
+export enum ButtonSizes {
+  LARGE = "LARGE",
+  REGULAR = "REGULAR",
+}
 
 export interface ButtonProps {
   variant?: ValueOf<ButtonVariants>;
+  size?: ValueOf<ButtonSizes>;
   children: React.ReactNode;
   onClick: () => void;
+  type?: string;
 }
 
 const Button = ({
   variant = ButtonVariants.PRIMARY,
+  size = ButtonSizes.REGULAR,
   children,
-  onClick
+  onClick,
+  type
 }: ButtonProps) => {
-  return <StyledButton variant={variant} onClick={onClick}>{children}</StyledButton>;
+  return (
+    <StyledButton type={type} size={size} variant={variant} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;
