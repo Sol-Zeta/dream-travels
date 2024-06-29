@@ -6,8 +6,6 @@ import { getTripsData } from "@/http/fetchData";
 import { getTrips, setTrips } from "@/store/slices/trips";
 import { useSelector } from "react-redux";
 import Card from "@/components/Card";
-import { Modal } from "@/components/Modal";
-import { ModalProvider } from "@/context/ModalContext";
 import { ValueOf } from "next/dist/shared/lib/constants";
 import { filterTripsByStatus, filterTripsByFilter } from "./utils";
 import { Container } from "./styles";
@@ -37,7 +35,6 @@ const TripTypology: React.FC<TripTypologyProps> = ({ tripStatus }) => {
   }, [filter]);
 
   return (
-    <ModalProvider>
       <Container>
         {tripsData.length ? (
           tripsData.map((trip: Trip) => (
@@ -46,9 +43,7 @@ const TripTypology: React.FC<TripTypologyProps> = ({ tripStatus }) => {
         ) : (
           <p>No trips found ✈️</p>
         )}
-        <Modal />
       </Container>
-    </ModalProvider>
   );
 };
 

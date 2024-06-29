@@ -13,16 +13,23 @@ import { TickButton } from "../TickButton";
 import { useDispatch } from "react-redux";
 import { editTripAction } from "@/store/actions";
 import { UnknownAction } from "@reduxjs/toolkit";
+import { Countdown } from "../Countdown";
+import { getDaysLeft } from "./utils";
 
-export const TripDetails: React.FC<Trip> = (props) => {
+interface TripDetailsProps extends Trip {
+  showCountdown?: boolean;
+}
+
+export const TripDetails: React.FC<TripDetailsProps> = (props) => {
   const { title, description, itinerary, status } = props;
+  const { showCountdown, ...tripData } = props;
 
   const dispatch = useDispatch();
 
   const handleClickStatus = (newStatus: boolean) => {
     dispatch(
       editTripAction({
-        ...props,
+        ...tripData,
         status: newStatus ? TripStatuses.DONE : TripStatuses.TODO,
       }) as unknown as UnknownAction
     );
@@ -30,16 +37,25 @@ export const TripDetails: React.FC<Trip> = (props) => {
 
   return (
     <Container>
-      <HeadingImage {...props} />
+      <HeadingImage {...tripData} />
       <ContentContainer>
         <Title>{title}</Title>
-        <TickButton
-          isActive={status === TripStatuses.DONE}
-          onClick={handleClickStatus}
-        />
+        {showCountdown ? (
+          <Countdown days={getDaysLeft(tripData)} />
+        ) : (
+          <TickButton
+            isActive={status === TripStatuses.DONE}
+            onClick={handleClickStatus}
+          />
+        )}
         <Description>{description}</Description>
-        <ItineraryTitle>Itinerary</ItineraryTitle>
-        <Itinerary data={itinerary} />
+        {itinerary && itinerary.length && (
+          <div>
+            {" "}
+            <ItineraryTitle>Itinerary</ItineraryTitle>
+            <Itinerary data={itinerary} />
+          </div>
+        )}
       </ContentContainer>
     </Container>
   );

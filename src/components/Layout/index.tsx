@@ -7,6 +7,8 @@ import AppWrapper from "@/components/AppWrapper";
 import SearchInput from "@/components/SearchInput";
 import { ContentWrapper, Title, Subtitle } from "./styles";
 import { SearchProvider } from "@/context/SearchContext";
+import { ModalProvider } from "@/context/ModalContext";
+import { Modal } from "@/components/Modal";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +25,15 @@ const Layout = ({
       <SearchProvider>
         <AppWrapper>
           <ContentWrapper>
-            <Header />
-            <Title>The places you dream of</Title>
-            <Subtitle>Let&apos;s live new adventures</Subtitle>
-            <SearchInput />
-            <TabsBar />
-            {children}
+            <ModalProvider>
+              <Header />
+              <Modal />
+              <Title>The places you dream of</Title>
+              <Subtitle>Let&apos;s live new adventures</Subtitle>
+              <SearchInput />
+              <TabsBar />
+              {children}
+            </ModalProvider>
           </ContentWrapper>
         </AppWrapper>
       </SearchProvider>
